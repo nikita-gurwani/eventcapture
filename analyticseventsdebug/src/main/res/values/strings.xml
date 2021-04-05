@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="action_bar_txt">Analytics Events Name List</string>
-    <string name="action_bar_detail_txt">Analytics Events Name Details</string>
-    <string name="heading">LIST OF EVENTS</string>
-</resources>
