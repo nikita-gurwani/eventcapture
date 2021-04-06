@@ -2,10 +2,30 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'maven-publish'
-apply plugin: 'com.github.dcendents.android-maven'
 
-group='com.ng.analytics_event_tracker'
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'AnalyticsEventTracker'
+
+    publishedGroupId = 'com.ng.analyticstracker.android'
+    libraryName = 'AnalyticsEventTracker'
+    artifact = 'analyticsEventTracker'
+
+    libraryDescription = 'analyticsEventTracker'
+
+    siteUrl = 'https://github.com/nikita-gurwani/android-event-debug'
+    gitUrl = 'https://github.com/nikita-gurwani/android-event-debug.git'
+
+    libraryVersion = "1.0.0"
+
+    developerId = 'Nikita-Gurwani'
+    developerName = 'Nikita Gurwani'
+    developerEmail = 'gurwani.nikita@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
 
 android {
     compileSdkVersion 30
@@ -53,16 +73,16 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.jitpack'
-                artifactId = 'android-event-debug'
-                version = '1.0.0'
-            }
-        }
-    }
-}
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            // Creates a Maven publication called "release".
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = 'com.github.jitpack'
+//                artifactId = 'android-event-debug'
+//                version = '1.0.0'
+//            }
+//        }
+//    }
+//}
