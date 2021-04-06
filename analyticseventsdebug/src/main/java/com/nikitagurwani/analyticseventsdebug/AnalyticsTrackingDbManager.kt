@@ -43,9 +43,6 @@ class AnalyticsTrackingDbManager(val context: Context) {
         return repository.getEventPropertiesJSON(eventName)
     }
 
-    fun getLaunchIntent(context: Context?): Intent? {
-        return Intent(context, AnalyticsEventsListActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    }
 
     fun searchEvents(s: String, list: List<AnalyticsEventDao>) {
         val itemList = ArrayList<AnalyticsEventDao>()

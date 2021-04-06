@@ -16,4 +16,7 @@ interface AnalyticsEventDaoAccess {
 
     @Query("SELECT * FROM AnalyticsEventTable as event WHERE event.eventName =:name")
     fun getEventPropertiesJson(name: String) : AnalyticsEventDao
+
+    @Query("DELETE FROM AnalyticsEventTable")
+    fun clearAllTheData()
 }

@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_analyics_event.*
+import kotlinx.android.synthetic.main.search_layout.*
 
 class AnalyticsEventsListActivity : AppCompatActivity() {
 
@@ -26,7 +27,7 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
 
     private fun setupRecyclerView(fetchAllEvents: List<AnalyticsEventDao>) {
         eventList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        allEventsAdapter = AllEventsAdapter(this, fetchAllEvents )
+        allEventsAdapter = AllEventsAdapter(this, fetchAllEvents)
         eventList.adapter = allEventsAdapter
         addItemClickListener()
     }
@@ -54,5 +55,9 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
         })
+
+        deleteAll.setOnClickListener {
+
+        }
     }
 }

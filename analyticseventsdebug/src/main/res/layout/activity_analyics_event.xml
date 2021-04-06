@@ -25,34 +25,18 @@
         android:layout_below="@+id/titleText"
         android:background="@color/viewColor" />
 
-    <EditText
-        android:id="@+id/searchText"
-        style="@style/AndroidTextDefault"
+    <include
+        android:layout_below="@+id/titleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titleView"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/backgroundSearch"
-        android:ellipsize="end"
-        android:hint="Search Events"
-        android:imeActionLabel="Search"
-        android:imeOptions="actionSearch"
-        android:inputType="text"
-        android:paddingTop="16dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="16dp"
-        android:singleLine="true"
-        android:textColorHint="@color/searchHint" />
+        android:id="@+id/searchLayout"
+        layout="@layout/search_layout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventList"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_below="@+id/searchText"
+        android:layout_below="@+id/searchLayout"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         tools:listitem="@layout/list_item_analyics_event" />

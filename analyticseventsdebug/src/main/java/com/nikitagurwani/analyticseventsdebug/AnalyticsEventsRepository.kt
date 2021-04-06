@@ -28,4 +28,8 @@ class AnalyticsEventsRepository(val analyticsEventDaoAccess: AnalyticsEventDaoAc
         }
         return map as HashMap<String, String>
     }
+
+    fun deleteAllData(){
+        analyticsEventDaoAccess.clearAllTheData()
+    }
 }
