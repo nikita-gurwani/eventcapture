@@ -5,7 +5,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'maven-publish'
 apply plugin: 'com.github.dcendents.android-maven'
 
-group='com.github.nikita-gurwani'
+group='com.ng.analytics_event_tracker'
 
 android {
     compileSdkVersion 30
