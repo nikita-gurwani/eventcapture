@@ -8,7 +8,7 @@
     android:layout_marginEnd="16dp"
     android:layout_marginBottom="10dp"
     android:background="@color/primaryColor"
-    tools:context="com.ng.analyticstracker.ui.AnalyticsEventsListActivity">
+    tools:context="com.ng.analyticeventsanalyzer.ui.AnalyticsEventsListActivity">
 
     <EditText
         android:id="@+id/searchText"

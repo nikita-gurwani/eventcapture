@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/primaryColor"
     android:clickable="true"
-    tools:context="com.ng.analyticstracker.ui.AnalyticsEventsListActivity"
+    tools:context="com.ng.analyticeventsanalyzer.ui.AnalyticsEventsListActivity"
     android:focusable="true">
 
     <TextView

@@ -2,7 +2,6 @@ package com.ng.analyticeventsanalyzer.model
 
 import android.content.Context
 import androidx.startup.Initializer
-import com.ng.analyticeventsanalyzer.model.AnalyticsTrackingDbManager
 
 class AnalyticsEventsInitializer : Initializer<AnalyticsTrackingDbManager> {
 

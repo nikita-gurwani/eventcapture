@@ -1,15 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nikitagurwani.analyticstracker">
+    package="com.ng.analyticeventsanalyzer">
 
     <application android:theme="@style/BaseTheme">
         <activity
-            android:name="com.ng.analyticstracker.ui.AnalyticsEventsListActivity"
+            android:name="com.ng.analyticeventsanalyzer.ui.AnalyticsEventsListActivity"
             android:theme="@style/BaseTheme">
 
         </activity>
 
         <activity
-            android:name="com.ng.analyticstracker.ui.AnalyticsEventsDetailsActivity"
+            android:name="com.ng.analyticeventsanalyzer.ui.AnalyticsEventsDetailsActivity"
             android:theme="@style/BaseTheme">
 
         </activity>
@@ -18,7 +18,7 @@
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false">
             <meta-data
-                android:name="com.ng.analyticstracker.model.AnalyticsEventsInitializer"
+                android:name="com.ng.analyticeventsanalyzer.model.AnalyticsEventsInitializer"
                 android:value="androidx.startup" />
 
         </provider>
