@@ -1,1 +1,1 @@
-include ':analyticseventsdebug'
+include ':analyticseventtracker'
