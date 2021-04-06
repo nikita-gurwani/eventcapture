@@ -79,8 +79,8 @@ afterEvaluate {
             // Creates a Maven publication called "release".
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.ng.analyticstracker.android'
-                artifactId = 'analyticsEventTracker'
+                groupId = 'com.ng.analyticeventsanalyzer.android'
+                artifactId = 'analyticeventsanalyzer'
                 version = '1.0.0'
             }
         }
