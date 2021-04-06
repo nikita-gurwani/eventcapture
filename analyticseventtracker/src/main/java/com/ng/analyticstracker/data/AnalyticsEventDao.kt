@@ -1,4 +1,4 @@
-package com.ng.analyticstracker
+package com.ng.analyticstracker.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

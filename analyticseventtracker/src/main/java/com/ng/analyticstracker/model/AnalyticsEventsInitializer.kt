@@ -1,7 +1,8 @@
-package com.ng.analyticstracker
+package com.ng.analyticstracker.model
 
 import android.content.Context
 import androidx.startup.Initializer
+import com.ng.analyticstracker.model.AnalyticsTrackingDbManager
 
 class AnalyticsEventsInitializer : Initializer<AnalyticsTrackingDbManager> {
 

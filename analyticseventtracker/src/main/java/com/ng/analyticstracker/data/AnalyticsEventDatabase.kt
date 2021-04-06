@@ -1,9 +1,9 @@
-package com.ng.analyticstracker
+package com.ng.analyticstracker.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.ng.analyticstracker.AnalyticsEventDao
-import com.ng.analyticstracker.AnalyticsEventDaoAccess
+import com.ng.analyticstracker.data.AnalyticsEventDao
+import com.ng.analyticstracker.data.AnalyticsEventDaoAccess
 
 @Database(entities = [AnalyticsEventDao::class], version = 1, exportSchema = false)
 abstract class AnalyticsEventDatabase : RoomDatabase(){

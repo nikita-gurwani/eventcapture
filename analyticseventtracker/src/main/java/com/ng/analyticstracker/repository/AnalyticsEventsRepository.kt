@@ -1,6 +1,8 @@
-package com.ng.analyticstracker
+package com.ng.analyticstracker.repository
 
 import com.google.gson.Gson
+import com.ng.analyticstracker.data.AnalyticsEventDao
+import com.ng.analyticstracker.data.AnalyticsEventDaoAccess
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*

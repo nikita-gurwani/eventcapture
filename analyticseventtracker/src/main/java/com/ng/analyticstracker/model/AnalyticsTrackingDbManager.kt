@@ -1,9 +1,13 @@
-package com.ng.analyticstracker
+package com.ng.analyticstracker.model
 
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
+import com.ng.analyticstracker.repository.AnalyticsEventsRepository
+import com.ng.analyticstracker.data.AnalyticsEventDao
+import com.ng.analyticstracker.data.AnalyticsEventDatabase
+import com.ng.analyticstracker.ui.AnalyticsEventsListActivity
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap

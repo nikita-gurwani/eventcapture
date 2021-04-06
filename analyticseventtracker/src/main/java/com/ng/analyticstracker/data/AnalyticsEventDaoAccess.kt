@@ -1,10 +1,10 @@
-package com.ng.analyticstracker
+package com.ng.analyticstracker.data
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.ng.analyticstracker.AnalyticsEventDao
+import com.ng.analyticstracker.data.AnalyticsEventDao
 
 @Dao
 interface AnalyticsEventDaoAccess {
