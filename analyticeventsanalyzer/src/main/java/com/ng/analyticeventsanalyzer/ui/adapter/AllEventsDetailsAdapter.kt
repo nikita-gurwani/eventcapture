@@ -1,4 +1,4 @@
-package com.ng.analyticstracker.ui.adapter
+package com.ng.analyticeventsanalyzer.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

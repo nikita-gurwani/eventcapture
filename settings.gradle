@@ -1,1 +1,1 @@
-include ':analyticseventtracker'
+include ':analyticeventsanalyzer'

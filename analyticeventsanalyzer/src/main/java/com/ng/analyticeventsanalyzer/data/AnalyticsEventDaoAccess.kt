@@ -1,10 +1,9 @@
-package com.ng.analyticstracker.data
+package com.ng.analyticeventsanalyzer.data
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.ng.analyticstracker.data.AnalyticsEventDao
 
 @Dao
 interface AnalyticsEventDaoAccess {
@@ -16,7 +15,7 @@ interface AnalyticsEventDaoAccess {
     fun fetchAllData(): List<AnalyticsEventDao>
 
     @Query("SELECT * FROM AnalyticsEventTable as event WHERE event.eventName =:name")
-    fun getEventPropertiesJson(name: String) : AnalyticsEventDao
+    fun getEventPropertiesJson(name: String): AnalyticsEventDao
 
     @Query("DELETE FROM AnalyticsEventTable")
     fun clearAllTheData()

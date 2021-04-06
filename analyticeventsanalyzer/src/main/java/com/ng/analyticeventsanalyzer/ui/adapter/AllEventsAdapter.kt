@@ -1,11 +1,11 @@
-package com.ng.analyticstracker.ui.adapter
+package com.ng.analyticeventsanalyzer.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ng.analyticstracker.data.AnalyticsEventDao
+import com.ng.analyticeventsanalyzer.data.AnalyticsEventDao
 import com.nikitagurwani.analyticstracker.R
 import kotlinx.android.synthetic.main.list_item_analyics_event.view.*
 
