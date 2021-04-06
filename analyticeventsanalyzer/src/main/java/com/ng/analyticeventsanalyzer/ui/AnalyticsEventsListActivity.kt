@@ -9,10 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ng.analyticeventsanalyzer.R
 import com.ng.analyticeventsanalyzer.ui.adapter.AllEventsAdapter
 import com.ng.analyticeventsanalyzer.data.AnalyticsEventDao
 import com.ng.analyticeventsanalyzer.model.AnalyticsTrackingDbManager
-import com.nikitagurwani.analyticstracker.R
 import kotlinx.android.synthetic.main.activity_analyics_event.*
 import kotlinx.android.synthetic.main.search_layout.*
 

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ng.analyticeventsanalyzer.data.AnalyticsEventDao
-import com.nikitagurwani.analyticstracker.R
+import com.ng.analyticeventsanalyzer.R
 import kotlinx.android.synthetic.main.list_item_analyics_event.view.*
 
 class AllEventsAdapter(private val context: Context, private var events: List<AnalyticsEventDao>) :
