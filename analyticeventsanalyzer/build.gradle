@@ -5,27 +5,27 @@ apply plugin: 'kotlin-kapt'
 apply plugin:'maven-publish'
 apply plugin:'com.github.dcendents.android-maven'
 
-ext {
-
-    publishedGroupId = 'com.ng.analyticstracker.android'
-    libraryName = 'AnalyticsEventTracker'
-    artifact = 'analyticsEventTracker'
-
-    libraryDescription = 'analyticsEventTracker'
-
-    siteUrl = 'https://github.com/nikita-gurwani/android-event-debug'
-    gitUrl = 'https://github.com/nikita-gurwani/android-event-debug.git'
-
-    libraryVersion = "1.0.0"
-
-    developerId = 'Nikita-Gurwani'
-    developerName = 'Nikita Gurwani'
-    developerEmail = 'gurwani.nikita@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
+//ext {
+//
+//    publishedGroupId = 'com.ng.analyticstracker.android'
+//    libraryName = 'AnalyticsEventTracker'
+//    artifact = 'analyticsEventTracker'
+//
+//    libraryDescription = 'analyticsEventTracker'
+//
+//    siteUrl = 'https://github.com/nikita-gurwani/android-event-debug'
+//    gitUrl = 'https://github.com/nikita-gurwani/android-event-debug.git'
+//
+//    libraryVersion = "1.0.0"
+//
+//    developerId = 'Nikita-Gurwani'
+//    developerName = 'Nikita Gurwani'
+//    developerEmail = 'gurwani.nikita@gmail.com'
+//
+//    licenseName = 'The Apache Software License, Version 2.0'
+//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//    allLicenses = ["Apache-2.0"]
+//}
 
 android {
     compileSdkVersion 30
