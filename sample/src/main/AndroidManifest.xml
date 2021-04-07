@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:theme">
-        <activity android:name="com.ng.analyticecentsanalyzer.com.ng.analyticseventsanalyzer.sample.MainActivity">
+        <activity android:name="com.ng.analyticecentsanalyzer.sample.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

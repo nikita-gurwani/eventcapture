@@ -18,6 +18,18 @@
         android:paddingBottom="12dp"
         android:text="@string/action_bar_txt" />
 
+    <ImageView
+        android:id="@+id/deleteAll"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/event_debug_ic_delete"
+        android:padding="10dp"
+        android:scaleType="fitXY"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <View
         android:id="@+id/titleView"
         android:layout_width="match_parent"
@@ -30,7 +42,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchLayout"
-        layout="@layout/search_layout" />
+        layout="@layout/search_layout"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventList"
