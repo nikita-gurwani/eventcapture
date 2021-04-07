@@ -1,12 +1,14 @@
 package com.ng.analyticeventsanalyzer.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ng.analyticeventsanalyzer.R
-import com.ng.analyticeventsanalyzer.ui.adapter.AllEventsDetailsAdapter
 import com.ng.analyticeventsanalyzer.model.AnalyticsTrackingDbManager
+import com.ng.analyticeventsanalyzer.ui.adapter.AllEventsDetailsAdapter
 import kotlinx.android.synthetic.main.activity_analyics_event_details.*
 
 class AnalyticsEventsDetailsActivity : AppCompatActivity() {
@@ -21,7 +23,21 @@ class AnalyticsEventsDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_analyics_event_details)
         handleIntentArgs()
         dbManager = AnalyticsTrackingDbManager.instance
+        dbManager.fetchAllEventProperties(eventName)
         setupRecyclerView()
+        handleShareButton()
+    }
+
+    private fun handleShareButton() {
+        shareAll.setOnClickListener {
+            dbManager.eventPropertiesList.value.let {
+                val intent = Intent(Intent.ACTION_SEND)
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, dbManager.getEventPropertiesAsText(it));
+                startActivity(intent);
+            }
+
+        }
     }
 
     private fun handleIntentArgs() {
@@ -34,8 +50,12 @@ class AnalyticsEventsDetailsActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        eventDetailsList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        allEventsDetailsAdapter = AllEventsDetailsAdapter(this, dbManager.fetchAllEventProperties(eventName))
-        eventDetailsList.adapter = allEventsDetailsAdapter
+        dbManager.eventPropertiesList.observe( this, Observer {
+            eventDetailsList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+            allEventsDetailsAdapter = AllEventsDetailsAdapter(this, it)
+            eventDetailsList.adapter = allEventsDetailsAdapter
+            allEventsDetailsAdapter.notifyDataSetChanged()
+        })
+
     }
 }

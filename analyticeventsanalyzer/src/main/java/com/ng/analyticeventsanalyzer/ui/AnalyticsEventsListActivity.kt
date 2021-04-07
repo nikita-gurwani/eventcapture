@@ -25,7 +25,10 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_analyics_event)
         dbManager = AnalyticsTrackingDbManager.instance
-        setupRecyclerView(dbManager.fetchAllEvents())
+        dbManager.fetchAllEvents()
+        dbManager.allEventsList.observe(this, Observer {
+            setupRecyclerView(it)
+        })
         handleSearchView()
     }
 
@@ -33,6 +36,7 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
         eventList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         allEventsAdapter = AllEventsAdapter(this, fetchAllEvents)
         eventList.adapter = allEventsAdapter
+        allEventsAdapter.notifyDataSetChanged()
         addItemClickListener()
     }
 
@@ -52,7 +56,7 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
         searchText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 Handler().postDelayed({
-                    dbManager.searchEvents(s.toString(), dbManager.fetchAllEvents())
+                    dbManager.searchEvents(s.toString(), dbManager.allEventsList)
                 }, 500)
             }
 
@@ -61,7 +65,7 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
         })
 
         deleteAll.setOnClickListener {
-
+            dbManager.deleteAllEvents()
         }
     }
 }

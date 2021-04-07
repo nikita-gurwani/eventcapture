@@ -20,6 +20,18 @@
         android:text="@string/action_bar_detail_txt"
         android:background="@color/actionBarBackground"/>
 
+    <ImageView
+        android:id="@+id/shareAll"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/event_debug_ic_delete"
+        android:padding="10dp"
+        android:scaleType="fitXY"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <View
         android:id="@+id/titleView"
         android:layout_width="match_parent"
