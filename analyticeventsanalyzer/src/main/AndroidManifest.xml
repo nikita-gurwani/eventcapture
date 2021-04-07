@@ -16,7 +16,7 @@
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="${applicationId}.androidx-startup"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="com.ng.analyticeventsanalyzer.model.AnalyticsEventsInitializer"
                 android:value="androidx.startup" />
