@@ -21,7 +21,7 @@ class AnalyticsTrackingDbManager(val context: Context) {
     var eventPropertiesList: MutableLiveData<HashMap<String, String>> = MutableLiveData()
 
     companion object {
-        lateinit var instance: AnalyticsTrackingDbManager
+        var instance: AnalyticsTrackingDbManager? = null
     }
 
     init {
