@@ -24,7 +24,9 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_analyics_event)
-        dbManager = AnalyticsTrackingDbManager.instance
+        AnalyticsTrackingDbManager.instance?.let {
+            dbManager = it
+        }
         dbManager.fetchAllEvents()
         dbManager.allEventsList.observe(this, Observer {
             setupRecyclerView(it)

@@ -22,7 +22,9 @@ class AnalyticsEventsDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_analyics_event_details)
         handleIntentArgs()
-        dbManager = AnalyticsTrackingDbManager.instance
+        AnalyticsTrackingDbManager.instance?.let {
+            dbManager = it
+        }
         dbManager.fetchAllEventProperties(eventName)
         setupRecyclerView()
         handleShareButton()
