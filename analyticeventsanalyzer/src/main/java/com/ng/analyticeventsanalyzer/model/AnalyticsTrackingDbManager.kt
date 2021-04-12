@@ -15,7 +15,7 @@ class AnalyticsTrackingDbManager(val context: Context) {
 
     var analyticsDb: AnalyticsEventDatabase
     var repository: AnalyticsEventsRepository
-
+    var mNotificationHelper: NotificationHelper
     var filteredList: MutableLiveData<List<AnalyticsEventDao>> = MutableLiveData()
     var allEventsList: MutableLiveData<List<AnalyticsEventDao>> = MutableLiveData()
     var eventPropertiesList: MutableLiveData<HashMap<String, String>> = MutableLiveData()
@@ -34,6 +34,8 @@ class AnalyticsTrackingDbManager(val context: Context) {
                 .fallbackToDestructiveMigration().allowMainThreadQueries().build()
         repository = AnalyticsEventsRepository(analyticsDb.daoAccess())
         instance = this
+        mNotificationHelper = NotificationHelper(context)
+        showNotification(false)
     }
 
     fun insertAnalyticsEvent(eventName: String, eventProperties: Map<String, String>) {
@@ -71,12 +73,32 @@ class AnalyticsTrackingDbManager(val context: Context) {
         allEventsList.value = mutableListOf()
     }
 
-    fun getEventPropertiesAsText(eventProperties: HashMap<String, String>?) : String {
+    fun getEventPropertiesAsText(eventProperties: HashMap<String, String>?): String {
         val eventProperty: Map<String, String> = LinkedHashMap(eventProperties)
         var eventString: String = ""
-        for(key: String in eventProperty.keys){
+        for (key: String in eventProperty.keys) {
             eventString = eventString + key + "  " + eventProperty[key] + "\n"
         }
         return eventString
+    }
+
+    fun getAllEventPropertiesAsText(): String {
+        var eventString: String = ""
+        allEventsList.value?.let{
+            for (name: AnalyticsEventDao in allEventsList.value!!)
+                eventString
+        }
+
+        return eventString
+    }
+
+    fun showNotification(sticky: Boolean){
+        fetchAllEvents()
+        mNotificationHelper.setUp()
+        mNotificationHelper.show(sticky, allEventsList)
+    }
+
+    fun dismiss(){
+        mNotificationHelper.dismiss()
     }
 }

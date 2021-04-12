@@ -9,11 +9,26 @@
         style="@style/AndroidTextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/timeFired"
+        android:layout_toLeftOf="@+id/timeFired"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="12dp"
         tools:text="@tools:sample/lorem" />
+
+    <TextView
+        android:id="@+id/timeFired"
+        android:text="11:22"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <View
         android:layout_below="@+id/eventNameText"

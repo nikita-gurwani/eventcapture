@@ -23,7 +23,7 @@ class AllEventsAdapter(private val context: Context, private var events: List<An
         when (holder) {
             is AllEventsNameAdapterViewHolder -> {
                 events[position].let {
-                    holder.bind(it.eventName)
+                    holder.bind(it.eventName, it.timeStamp)
                 }
             }
         }
@@ -39,8 +39,9 @@ class AllEventsAdapter(private val context: Context, private var events: List<An
             }
         }
 
-        fun bind(name: String) {
+        fun bind(name: String, time: String) {
             itemView.eventNameText.text = name
+            itemView.timeFired.text = time
         }
     }
 

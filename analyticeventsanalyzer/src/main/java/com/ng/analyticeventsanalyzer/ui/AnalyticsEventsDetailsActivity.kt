@@ -11,7 +11,7 @@ import com.ng.analyticeventsanalyzer.model.AnalyticsTrackingDbManager
 import com.ng.analyticeventsanalyzer.ui.adapter.AllEventsDetailsAdapter
 import kotlinx.android.synthetic.main.activity_analyics_event_details.*
 
-class AnalyticsEventsDetailsActivity : AppCompatActivity() {
+class AnalyticsEventsDetailsActivity : BaseAnalyticsActivity() {
 
     private lateinit var dbManager: AnalyticsTrackingDbManager
     private lateinit var allEventsDetailsAdapter: AllEventsDetailsAdapter
@@ -59,5 +59,10 @@ class AnalyticsEventsDetailsActivity : AppCompatActivity() {
             allEventsDetailsAdapter.notifyDataSetChanged()
         })
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        dbManager.dismiss()
     }
 }

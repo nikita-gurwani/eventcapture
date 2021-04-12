@@ -16,16 +16,18 @@ import com.ng.analyticeventsanalyzer.model.AnalyticsTrackingDbManager
 class AnalyticsEventsTracker {
 
     object eventTracker {
-
+        private var dbManager: AnalyticsTrackingDbManager? = null
         fun handleDbEvent(name: String, properties: Map<String, String>) = run {
-            val dbManager: AnalyticsTrackingDbManager = AnalyticsTrackingDbManager.instance
-            dbManager.insertAnalyticsEvent(name, properties)
+            AnalyticsTrackingDbManager.instance?.let {
+                dbManager = it
+            }
+            dbManager?.insertAnalyticsEvent(name, properties)
         }
     }
 
     object startActivityTracker {
         fun startActivityAnalyticsEvent(context: Context) {
-            context.startActivity(AnalyticsTrackingDbManager.instance.getLaunchIntent(context))
+            context.startActivity(AnalyticsTrackingDbManager.instance?.getLaunchIntent(context))
         }
     }
 }
