@@ -1,7 +1,7 @@
 package com.ng.analyticseventsanalyzer.data
 
 import android.content.Context
-import com.ng.analyticeventsanalyzer.model.AnalyticsTrackingDbManager
+import com.ng.event_capture.model.AnalyticsTrackingDbManager
 
 
 //fun handleDbEvent(name: String, properties: Map<String, String>) = run {

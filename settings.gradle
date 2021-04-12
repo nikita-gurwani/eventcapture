@@ -1,2 +1,2 @@
-include ':analyticeventsanalyzer'
 include ':sample'
+include ':event-capture'

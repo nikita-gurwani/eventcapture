@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/primaryColor"
+    tools:context="com.ng.event_capture.ui.AnalyticsEventsListActivity">
+
+    <EditText
+        android:id="@+id/searchText"
+        style="@style/AndroidTextDefault"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundSearch"
+        android:ellipsize="end"
+        android:hint="Search Events"
+        android:imeActionLabel="Search"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:paddingStart="10dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="16dp"
+        android:singleLine="true"
+        android:textColorHint="@color/searchHint" />
+
+
+
+</RelativeLayout>

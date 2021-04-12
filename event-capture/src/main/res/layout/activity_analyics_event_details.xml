@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryColor"
+    android:clickable="true"
+    tools:context="com.ng.event_capture.ui.AnalyticsEventsListActivity"
+    android:focusable="true">
+
+    <TextView
+        android:id="@+id/detailTitleText"
+        style="@style/AndroidHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="12dp"
+        android:text="@string/action_bar_detail_txt"
+        android:background="@color/actionBarBackground"/>
+
+    <ImageView
+        android:id="@+id/shareAll"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/event_debug_ic_share"
+        android:padding="10dp"
+        android:scaleType="fitXY"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <View
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/detailTitleText"
+        android:background="@color/viewColor" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/eventDetailsList"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/titleView"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        tools:listitem="@layout/details_item_analyics_event" />
+
+</RelativeLayout>
