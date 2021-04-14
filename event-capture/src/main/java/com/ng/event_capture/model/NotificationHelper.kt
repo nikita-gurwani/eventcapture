@@ -23,7 +23,7 @@ class NotificationHelper(var context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             notificationManager = context.getSystemService(NotificationManager::class.java)
         }
-        createNotificationChannel(NotificationManagerCompat.IMPORTANCE_DEFAULT, false,
+        createNotificationChannel(NotificationManagerCompat.IMPORTANCE_LOW, false,
                 "eventCapture", "Event Capture notification channel.")
     }
 

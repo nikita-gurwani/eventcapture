@@ -40,6 +40,7 @@ class AnalyticsTrackingDbManager(val context: Context) {
 
     fun insertAnalyticsEvent(eventName: String, eventProperties: Map<String, String>) {
         repository.insertAnalyticEvents(eventName, eventProperties)
+        showNotification(false)
     }
 
     fun fetchAllEvents() {
