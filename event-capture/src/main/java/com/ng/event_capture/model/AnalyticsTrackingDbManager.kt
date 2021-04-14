@@ -45,6 +45,10 @@ class AnalyticsTrackingDbManager(val context: Context) {
 
     fun fetchAllEvents() {
         allEventsList.value = repository.fetchAllEvents()
+        allEventsList.value?.let{
+            Collections.reverse(it)
+        }
+
     }
 
     fun fetchAllEventProperties(eventName: String) {
