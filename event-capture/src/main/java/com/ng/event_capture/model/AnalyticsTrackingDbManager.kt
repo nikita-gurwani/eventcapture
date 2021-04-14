@@ -92,10 +92,14 @@ class AnalyticsTrackingDbManager(val context: Context) {
         return eventString
     }
 
-    fun showNotification(sticky: Boolean){
+    fun showNotification(sticky: Boolean) {
         fetchAllEvents()
-        mNotificationHelper.setUp()
-        mNotificationHelper.show(sticky, allEventsList)
+        allEventsList.value?.let {
+            if (it.isNotEmpty()) {
+                mNotificationHelper.setUp()
+                mNotificationHelper.show(sticky, allEventsList)
+            }
+        }
     }
 
     fun dismiss(){

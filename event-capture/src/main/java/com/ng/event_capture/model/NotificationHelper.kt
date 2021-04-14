@@ -39,7 +39,6 @@ class NotificationHelper(var context: Context) {
     }
 
     fun show(stickyNotification: Boolean, textToShow: MutableLiveData<List<AnalyticsEventDao>>) {
-
         val builder = NotificationCompat.Builder(context, ID)
                 .setContentIntent(PendingIntent.getActivity(context, 0, getLaunchIntent(context), 0))
                 .setLocalOnly(true)
