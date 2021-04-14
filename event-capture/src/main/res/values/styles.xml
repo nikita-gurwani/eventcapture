@@ -24,4 +24,13 @@
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
+    <style name="AndroidBodyBodyDefault">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/searchHint</item>
+    </style>
+
 </resources>

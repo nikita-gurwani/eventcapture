@@ -73,13 +73,13 @@ class AnalyticsTrackingDbManager(val context: Context) {
         allEventsList.value = mutableListOf()
     }
 
-    fun getEventPropertiesAsText(eventProperties: HashMap<String, String>?): String {
+    fun getEventPropertiesAsText(eventName: String, eventProperties: HashMap<String, String>?): String {
         val eventProperty: Map<String, String> = LinkedHashMap(eventProperties)
         var eventString: String = ""
         for (key: String in eventProperty.keys) {
             eventString = eventString + key + "  " + eventProperty[key] + "\n"
         }
-        return eventString
+        return eventName + "\n" + eventString
     }
 
     fun getAllEventPropertiesAsText(): String {

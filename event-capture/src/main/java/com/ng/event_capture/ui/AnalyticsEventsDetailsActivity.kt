@@ -2,6 +2,8 @@ package com.ng.event_capture.ui
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +11,7 @@ import com.ng.event_capture.R
 import com.ng.event_capture.model.AnalyticsTrackingDbManager
 import com.ng.event_capture.ui.adapter.AllEventsDetailsAdapter
 import kotlinx.android.synthetic.main.activity_analyics_event_details.*
+
 
 class AnalyticsEventsDetailsActivity : BaseAnalyticsActivity() {
 
@@ -37,7 +40,7 @@ class AnalyticsEventsDetailsActivity : BaseAnalyticsActivity() {
             dbManager.eventPropertiesList.value.let {
                 val intent = Intent(Intent.ACTION_SEND)
                 intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, dbManager.getEventPropertiesAsText(it));
+                intent.putExtra(Intent.EXTRA_TEXT, dbManager.getEventPropertiesAsText(eventName, it));
                 startActivity(intent);
             }
 
@@ -48,7 +51,10 @@ class AnalyticsEventsDetailsActivity : BaseAnalyticsActivity() {
         intent?.let { intent ->
             intent.getStringExtra(eventNameArg)?.let {
                 eventName = it
-                detailTitleText.text = eventName
+                val toolbar = findViewById<Toolbar>(R.id.detailTitleText)
+                toolbar.title = it
+                toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.primaryColor))
+                setSupportActionBar(toolbar)
             }
         }
     }

@@ -3,19 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryColor"
+    android:background="@color/backGroundColor"
     tools:context="com.ng.event_capture.ui.AnalyticsEventsListActivity">
 
-    <TextView
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/titleText"
         style="@style/AndroidHeading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/actionBarBackground"
-        android:paddingStart="10dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="12dp"
         android:text="@string/action_bar_txt" />
 
     <ImageView
@@ -25,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/event_debug_ic_delete"
-        android:padding="10dp"
+        android:padding="20dp"
         android:scaleType="fitXY"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -43,9 +39,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/searchLayout"
         layout="@layout/search_layout"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView

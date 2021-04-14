@@ -6,6 +6,8 @@ import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +26,7 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_analyics_event)
+        setUpViews()
         AnalyticsTrackingDbManager.instance?.let {
             dbManager = it
         }
@@ -32,6 +35,13 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
             setupRecyclerView(it)
         })
         handleSearchView()
+    }
+
+    private fun setUpViews() {
+        val toolbar = findViewById<Toolbar>(R.id.titleText)
+        toolbar.title = getString(R.string.action_bar_txt)
+        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.primaryColor))
+        setSupportActionBar(toolbar)
     }
 
     private fun setupRecyclerView(fetchAllEvents: List<AnalyticsEventDao>) {
