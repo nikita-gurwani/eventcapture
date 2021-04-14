@@ -65,9 +65,11 @@ class AllEventsAdapter(private val context: Context, private var events: List<An
             } else if (TimeUnit.MILLISECONDS.toMinutes(dateDifference) < 60) {
                 println("Min " + TimeUnit.MILLISECONDS.toMinutes(dateDifference))
                 return TimeUnit.MILLISECONDS.toMinutes(dateDifference).toString() + " min"
-            } else {
+            } else if (TimeUnit.MILLISECONDS.toHours(dateDifference) < 24) {
                 println("Hours " + TimeUnit.MILLISECONDS.toHours(dateDifference))
                 return TimeUnit.MILLISECONDS.toHours(dateDifference).toString() + " hr"
+            }else {
+                return TimeUnit.MILLISECONDS.toDays(dateDifference).toString() + " D"
             }
         } catch (ex: Exception) {
             ex.printStackTrace()
