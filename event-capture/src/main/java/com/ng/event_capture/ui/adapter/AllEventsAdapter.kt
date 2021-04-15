@@ -24,7 +24,6 @@ class AllEventsAdapter(private val context: Context, private var events: List<An
         return AllEventsNameAdapterViewHolder(view)
     }
 
-    @ExperimentalTime
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is AllEventsNameAdapterViewHolder -> {
@@ -45,10 +44,9 @@ class AllEventsAdapter(private val context: Context, private var events: List<An
             }
         }
 
-        @ExperimentalTime
         fun bind(name: String, time: String) {
             itemView.eventNameText.text = name
-            itemView.timeFired.text = handleTime(time)
+            itemView.timeFired.text = time
         }
     }
 

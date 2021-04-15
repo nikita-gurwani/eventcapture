@@ -33,6 +33,7 @@ class AnalyticsTrackingDbManager(val context: Context) {
         )
                 .fallbackToDestructiveMigration().allowMainThreadQueries().build()
         repository = AnalyticsEventsRepository(analyticsDb.daoAccess())
+        repository.deleteAllData()
         instance = this
         mNotificationHelper = NotificationHelper(context)
         showNotification(false)
@@ -44,7 +45,7 @@ class AnalyticsTrackingDbManager(val context: Context) {
     }
 
     fun fetchAllEvents() {
-        allEventsList.value = repository.fetchAllEvents()
+        allEventsList.postValue(repository.fetchAllEvents())
         allEventsList.value?.let{
             Collections.reverse(it)
         }
