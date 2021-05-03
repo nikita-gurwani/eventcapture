@@ -46,10 +46,6 @@ class AnalyticsTrackingDbManager(val context: Context) {
 
     fun fetchAllEvents() {
         allEventsList.postValue(repository.fetchAllEvents())
-        allEventsList.value?.let{
-            Collections.reverse(it)
-        }
-
     }
 
     fun fetchAllEventProperties(eventName: String) {
@@ -79,6 +75,11 @@ class AnalyticsTrackingDbManager(val context: Context) {
         allEventsList.value = mutableListOf()
     }
 
+    fun deleteParticularData(analyticsEventDao: AnalyticsEventDao){
+        repository.deleteRowData(analyticsEventDao)
+        fetchAllEvents()
+    }
+
     fun getEventPropertiesAsText(eventName: String, eventProperties: HashMap<String, String>?): String {
         val eventProperty: Map<String, String> = LinkedHashMap(eventProperties)
         var eventString: String = ""
@@ -88,14 +89,10 @@ class AnalyticsTrackingDbManager(val context: Context) {
         return eventName + "\n" + eventString
     }
 
-    fun getAllEventPropertiesAsText(): String {
-        var eventString: String = ""
-        allEventsList.value?.let{
-            for (name: AnalyticsEventDao in allEventsList.value!!)
-                eventString
+    fun getAllEventPropertiesAsText(): String? {
+        return allEventsList.value?.let {
+             repository.getAllEventsAsJSON(it)
         }
-
-        return eventString
     }
 
     fun showNotification(sticky: Boolean) {
@@ -110,5 +107,9 @@ class AnalyticsTrackingDbManager(val context: Context) {
 
     fun dismiss(){
         mNotificationHelper.dismiss()
+    }
+
+    fun sort(events: List<AnalyticsEventDao>): List<AnalyticsEventDao> {
+        return ArrayList(events).sortedWith(compareByDescending<AnalyticsEventDao> { it.timeStamp })
     }
 }

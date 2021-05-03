@@ -19,6 +19,8 @@ class AllEventsAdapter(private val context: Context, private var events: List<An
 
     var onItemClick: ((events: AnalyticsEventDao) -> Unit)? = null
 
+    var onDeleteClick: ((events: AnalyticsEventDao) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.list_item_analyics_event, parent, false)
         return AllEventsNameAdapterViewHolder(view)
@@ -47,6 +49,9 @@ class AllEventsAdapter(private val context: Context, private var events: List<An
         fun bind(name: String, time: String) {
             itemView.eventNameText.text = name
             itemView.timeFired.text = time
+            itemView.delete.setOnClickListener {
+                onDeleteClick?.invoke(events[adapterPosition])
+            }
         }
     }
 

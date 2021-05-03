@@ -31,7 +31,21 @@ class AnalyticsEventsRepository(val analyticsEventDaoAccess: AnalyticsEventDaoAc
         return map as HashMap<String, String>
     }
 
-    fun deleteAllData(){
+    fun getAllEventsAsJSON(events: List<AnalyticsEventDao>): String {
+        var jsonString: String = ""
+        try {
+           jsonString = Gson().toJson(events)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return jsonString
+    }
+
+    fun deleteAllData() {
         analyticsEventDaoAccess.clearAllTheData()
+    }
+
+    fun deleteRowData(analyticsEventDao: AnalyticsEventDao) {
+        analyticsEventDaoAccess.delete(analyticsEventDao)
     }
 }

@@ -12,10 +12,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ng.event_capture.R
-import com.ng.event_capture.ui.adapter.AllEventsAdapter
 import com.ng.event_capture.data.AnalyticsEventDao
 import com.ng.event_capture.model.AnalyticsTrackingDbManager
+import com.ng.event_capture.ui.adapter.AllEventsAdapter
 import kotlinx.android.synthetic.main.activity_analyics_event.*
+import kotlinx.android.synthetic.main.activity_analyics_event_details.*
 import kotlinx.android.synthetic.main.search_layout.*
 
 class AnalyticsEventsListActivity : AppCompatActivity() {
@@ -35,6 +36,7 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
             setupRecyclerView(it)
         })
         handleSearchView()
+        handleShareButton()
     }
 
     private fun setUpViews() {
@@ -46,7 +48,7 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
 
     private fun setupRecyclerView(fetchAllEvents: List<AnalyticsEventDao>) {
         eventList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        allEventsAdapter = AllEventsAdapter(this, fetchAllEvents)
+        allEventsAdapter = AllEventsAdapter(this, dbManager.sort(fetchAllEvents))
         eventList.adapter = allEventsAdapter
         allEventsAdapter.notifyDataSetChanged()
         addItemClickListener()
@@ -57,6 +59,10 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
             val intent = Intent(this, AnalyticsEventsDetailsActivity::class.java)
             intent.putExtra(AnalyticsEventsDetailsActivity.eventNameArg, events.eventName)
             startActivity(intent)
+        }
+
+        allEventsAdapter.onDeleteClick = {
+            dbManager.deleteParticularData(it)
         }
     }
 
@@ -78,6 +84,18 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
 
         deleteAll.setOnClickListener {
             dbManager.deleteAllEvents()
+        }
+    }
+
+    private fun handleShareButton() {
+        shareJsonAll.setOnClickListener {
+            dbManager.eventPropertiesList.value.let {
+                val intent = Intent(Intent.ACTION_SEND)
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, dbManager.getAllEventPropertiesAsText());
+                startActivity(intent);
+            }
+
         }
     }
 }

@@ -14,24 +14,38 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
         android:paddingStart="5dp"
-        android:paddingEnd="5dp">
+        android:paddingTop="8dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/event_debug_ic_delete" />
 
         <TextView
             android:id="@+id/eventNameText"
             style="@style/AndroidTextDefault"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="12dp"
             android:layout_toStartOf="@+id/timeFired"
             android:layout_toLeftOf="@+id/timeFired"
+            android:layout_toEndOf="@+id/delete"
+            android:layout_toRightOf="@+id/delete"
             tools:text="@tools:sample/lorem" />
 
         <TextView
@@ -45,11 +59,6 @@
             android:layout_marginBottom="12dp"
             android:text="11:22" />
 
-        <!--        <View-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="1dp"-->
-        <!--            android:layout_below="@+id/eventNameText"-->
-        <!--            android:background="@color/viewColor" />-->
 
     </RelativeLayout>
 
