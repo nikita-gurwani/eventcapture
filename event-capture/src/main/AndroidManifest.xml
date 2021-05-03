@@ -2,7 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ng.event_capture">
 
-    <application android:theme="@style/BaseTheme">
+    <application
+        android:allowBackup="false"
+        android:theme="@style/BaseTheme">
         <activity
             android:name="com.ng.event_capture.ui.AnalyticsEventsListActivity"
             android:theme="@style/BaseTheme"></activity>
@@ -15,9 +17,9 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            tools:node="merge"
             android:authorities="${applicationId}.androidx-startup"
-            android:exported="false">
+            android:exported="false"
+            tools:node="merge">
             <meta-data
                 android:name="com.ng.event_capture.model.AnalyticsEventsInitializer"
                 android:value="androidx.startup" />
