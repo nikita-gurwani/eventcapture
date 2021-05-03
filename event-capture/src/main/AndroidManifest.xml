@@ -3,7 +3,6 @@
     package="com.ng.event_capture">
 
     <application
-        android:allowBackup="false"
         android:theme="@style/BaseTheme">
         <activity
             android:name="com.ng.event_capture.ui.AnalyticsEventsListActivity"
