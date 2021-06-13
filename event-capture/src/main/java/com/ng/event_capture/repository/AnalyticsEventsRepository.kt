@@ -20,10 +20,10 @@ class AnalyticsEventsRepository(val analyticsEventDaoAccess: AnalyticsEventDaoAc
         return analyticsEventDaoAccess.fetchAllData()
     }
 
-    fun getEventPropertiesJSON(name: String): HashMap<String, String> {
+    fun getEventPropertiesJSON(id: Long): HashMap<String, String> {
         var map: Map<String, String> = HashMap()
         try {
-            val analyticsEventDao: AnalyticsEventDao = analyticsEventDaoAccess.getEventPropertiesJson(name)
+            val analyticsEventDao: AnalyticsEventDao = analyticsEventDaoAccess.getEventPropertiesJson(id)
             map = Gson().fromJson(analyticsEventDao.eventProperties, map.javaClass)
         } catch (e: Exception) {
             e.printStackTrace()
@@ -34,7 +34,7 @@ class AnalyticsEventsRepository(val analyticsEventDaoAccess: AnalyticsEventDaoAc
     fun getAllEventsAsJSON(events: List<AnalyticsEventDao>): String {
         var jsonString: String = ""
         try {
-           jsonString = Gson().toJson(events)
+            jsonString = Gson().toJson(events)
         } catch (e: Exception) {
             e.printStackTrace()
         }

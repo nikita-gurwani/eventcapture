@@ -21,6 +21,7 @@ class AnalyticsEventsDetailsActivity : BaseAnalyticsActivity() {
 
     companion object {
         var eventNameArg = "event_name_arg"
+        var eventIdArg = "event_id_arg"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,10 +30,19 @@ class AnalyticsEventsDetailsActivity : BaseAnalyticsActivity() {
         handleIntentArgs()
         AnalyticsTrackingDbManager.instance?.let {
             dbManager = it
+            handleEventId()
+
         }
-        dbManager.fetchAllEventProperties(eventName)
-        setupRecyclerView()
-        handleShareButton()
+    }
+
+    private fun handleEventId() {
+        intent?.let {
+            it.getLongExtra(eventIdArg, 0).let { eventId ->
+                dbManager.fetchAllEventProperties(eventId)
+                setupRecyclerView()
+                handleShareButton()
+            }
+        }
     }
 
     private fun handleShareButton() {
@@ -43,7 +53,6 @@ class AnalyticsEventsDetailsActivity : BaseAnalyticsActivity() {
                 intent.putExtra(Intent.EXTRA_TEXT, dbManager.getEventPropertiesAsText(eventName, it));
                 startActivity(intent);
             }
-
         }
     }
 

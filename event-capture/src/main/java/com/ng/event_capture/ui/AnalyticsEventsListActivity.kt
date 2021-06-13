@@ -58,6 +58,7 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
         allEventsAdapter.onItemClick = { events: AnalyticsEventDao ->
             val intent = Intent(this, AnalyticsEventsDetailsActivity::class.java)
             intent.putExtra(AnalyticsEventsDetailsActivity.eventNameArg, events.eventName)
+            intent.putExtra(AnalyticsEventsDetailsActivity.eventIdArg, events.id)
             startActivity(intent)
         }
 

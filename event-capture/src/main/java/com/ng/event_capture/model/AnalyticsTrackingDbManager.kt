@@ -19,6 +19,7 @@ class AnalyticsTrackingDbManager(val context: Context) {
     var filteredList: MutableLiveData<List<AnalyticsEventDao>> = MutableLiveData()
     var allEventsList: MutableLiveData<List<AnalyticsEventDao>> = MutableLiveData()
     var eventPropertiesList: MutableLiveData<HashMap<String, String>> = MutableLiveData()
+    var eventName: MutableLiveData<String> = MutableLiveData()
 
     companion object {
         var instance: AnalyticsTrackingDbManager? = null
@@ -48,8 +49,8 @@ class AnalyticsTrackingDbManager(val context: Context) {
         allEventsList.postValue(repository.fetchAllEvents())
     }
 
-    fun fetchAllEventProperties(eventName: String) {
-        eventPropertiesList.value = repository.getEventPropertiesJSON(eventName)
+    fun fetchAllEventProperties(id: Long) {
+        eventPropertiesList.value = repository.getEventPropertiesJSON(id)
     }
 
     fun getLaunchIntent(context: Context?): Intent? {
