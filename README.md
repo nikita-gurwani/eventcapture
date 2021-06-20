@@ -31,7 +31,7 @@ Add the dependency in your build.gradle file.
 debugImplementation 'com.github.nikita-gurwani:eventcapture:2.1.8'
 ```
 
-If you want this in library in both release and debug builds, then try this :
+If you want this library in both release and debug builds, then try this :
 ```sh
 implementation 'com.github.nikita-gurwani:eventcapture:2.1.8'
 ```
