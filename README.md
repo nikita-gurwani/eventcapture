@@ -1,3 +1,4 @@
+
 # Event Capture
 ## _Analytical Events Analysis_
 
@@ -21,16 +22,19 @@ EventCapture is a library to analyze the analytics event for any Android app. Ev
 - Share the events and its content
 
 ## Setup
-Download
 
 Based on your IDE you can import library in one of the following ways
 Gradle:
 
 Add the dependency in your build.gradle file.
+```sh
 debugImplementation 'com.github.nikita-gurwani:eventcapture:2.1.8'
+```
 
 If you want this in library in both release and debug builds, then try this :
-implementation 'com.github.nikita-gurwani:eventcapture:2.1.8''
+```sh
+implementation 'com.github.nikita-gurwani:eventcapture:2.1.8'
+```
 
 ## Usage
 
@@ -59,7 +63,6 @@ class AnalyticsEventsTracker {
 ```
 
 Then call method to update the database
-
 ```sh
 AnalyticsEventsTracker.EventTracker.handleDbEvent(name, properties)
 ```
