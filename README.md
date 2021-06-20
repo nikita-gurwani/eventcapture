@@ -5,10 +5,11 @@
 
 EventCapture is a library to analyze the analytics event for any Android app. EventCapture saves all the event fired from your application provides a UI for inspecting their content.
 
-![device-2021-06-21-003805](https://user-images.githubusercontent.com/14894852/122685880-ddb53880-d22b-11eb-8598-91d6f4806c77.png)
-![device-2021-06-21-003932](https://user-images.githubusercontent.com/14894852/122685889-e4dc4680-d22b-11eb-8711-d2bfffddf954.png)
-![notification](https://user-images.githubusercontent.com/14894852/122685936-397fc180-d22c-11eb-83f2-6bbdc281bfbf.png)
-
+<p float="left">
+<img src="https://user-images.githubusercontent.com/14894852/122685880-ddb53880-d22b-11eb-8598-91d6f4806c77.png" width="250" height = "500">
+<img src="https://user-images.githubusercontent.com/14894852/122685889-e4dc4680-d22b-11eb-8711-d2bfffddf954.png" width="250" height = "500">
+<img src="https://user-images.githubusercontent.com/14894852/122686200-9d56ba00-d22d-11eb-8345-3f0a41575191.png" width="250" height = "500">
+</p>
 
 ## Features
 
