@@ -20,4 +20,7 @@ interface AnalyticsEventDaoAccess {
     @Delete
     fun delete(analyticsEventDao: AnalyticsEventDao)
 
+    @Query("SELECT * FROM AnalyticsEventTable as event WHERE event.eventName =:name")
+    fun getEventsByName(name: String): List<AnalyticsEventDao>
+
 }

@@ -2,12 +2,12 @@ package com.ng.event_capture.model
 
 import android.content.Context
 import androidx.startup.Initializer
+import com.ng.event_capture.application.EventCaptureApp
 
-class AnalyticsEventsInitializer : Initializer<AnalyticsTrackingDbManager> {
+internal class AnalyticsEventsInitializer : Initializer<EventCaptureApp> {
 
-    override fun create(context: Context): AnalyticsTrackingDbManager {
-        //AnalyticsTrackingDbManager().init(context)
-        return AnalyticsTrackingDbManager(context)
+    override fun create(context: Context): EventCaptureApp {
+        return EventCaptureApp(context)
     }
 
     override fun dependencies(): List<Class<out Initializer<*>>> {

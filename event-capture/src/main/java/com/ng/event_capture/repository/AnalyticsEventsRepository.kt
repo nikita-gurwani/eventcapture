@@ -6,13 +6,14 @@ import com.ng.event_capture.data.AnalyticsEventDaoAccess
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.HashMap
 
-class AnalyticsEventsRepository(val analyticsEventDaoAccess: AnalyticsEventDaoAccess) {
+class AnalyticsEventsRepository(private val analyticsEventDaoAccess: AnalyticsEventDaoAccess) {
 
     fun insertAnalyticEvents(eventName: String, eventProperties: Map<String, String>) {
-        val analyticsEventDao = AnalyticsEventDao(eventName, SimpleDateFormat("MM/dd/yyyy hh:mm:ss", Locale.getDefault()).format(Date()),
-                JSONObject(eventProperties).toString())
+        val analyticsEventDao = AnalyticsEventDao(
+            eventName, SimpleDateFormat("MM/dd/yyyy hh:mm:ss", Locale.getDefault()).format(Date()),
+            JSONObject(eventProperties).toString()
+        )
         analyticsEventDaoAccess.insertAnalyticEventDAO(analyticsEventDao)
     }
 
@@ -32,7 +33,7 @@ class AnalyticsEventsRepository(val analyticsEventDaoAccess: AnalyticsEventDaoAc
     }
 
     fun getAllEventsAsJSON(events: List<AnalyticsEventDao>): String {
-        var jsonString: String = ""
+        var jsonString = ""
         try {
             jsonString = Gson().toJson(events)
         } catch (e: Exception) {
@@ -47,5 +48,9 @@ class AnalyticsEventsRepository(val analyticsEventDaoAccess: AnalyticsEventDaoAc
 
     fun deleteRowData(analyticsEventDao: AnalyticsEventDao) {
         analyticsEventDaoAccess.delete(analyticsEventDao)
+    }
+
+    fun fetchEventsByName(name: String): List<AnalyticsEventDao> {
+        return analyticsEventDaoAccess.getEventsByName(name)
     }
 }

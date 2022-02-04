@@ -3,6 +3,7 @@ package com.ng.event_capture.model
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -14,20 +15,25 @@ import com.ng.event_capture.R
 import com.ng.event_capture.data.AnalyticsEventDao
 import com.ng.event_capture.ui.AnalyticsEventsListActivity
 
-class NotificationHelper(var context: Context) {
+internal class NotificationHelper(var context: Context) {
 
     private lateinit var notificationManager: NotificationManager
     private val ID = "eventCaptureNotification"
 
     fun setUp() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            notificationManager = context.getSystemService(NotificationManager::class.java)
-        }
-        createNotificationChannel(NotificationManagerCompat.IMPORTANCE_LOW, false,
-                "eventCapture", "Event Capture notification channel.")
+        notificationManager = context.getSystemService(NotificationManager::class.java)
+        createNotificationChannel(
+            NotificationManagerCompat.IMPORTANCE_LOW, false,
+            "eventCapture", "Event Capture notification channel."
+        )
     }
 
-    fun createNotificationChannel(importance: Int, showBadge: Boolean, name: String, description: String) {
+    private fun createNotificationChannel(
+        importance: Int,
+        showBadge: Boolean,
+        name: String,
+        description: String
+    ) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channelId = ID
             val channel = NotificationChannel(channelId, name, importance)
@@ -38,14 +44,22 @@ class NotificationHelper(var context: Context) {
         }
     }
 
+
     fun show(stickyNotification: Boolean, textToShow: MutableLiveData<List<AnalyticsEventDao>>) {
         val builder = NotificationCompat.Builder(context, ID)
-                .setContentIntent(PendingIntent.getActivity(context, 0, getLaunchIntent(context), 0))
-                .setLocalOnly(true)
-                .setSmallIcon(R.drawable.event_black_ic_notification)
-                .setColor(ContextCompat.getColor(context, R.color.primaryColor))
-                .setOngoing(stickyNotification)
-                .setContentTitle("Capturing Events Logs")
+            .setContentIntent(
+                PendingIntent.getActivity(
+                    context,
+                    0,
+                    getLaunchIntent(context),
+                    FLAG_IMMUTABLE
+                )
+            )
+            .setLocalOnly(true)
+            .setSmallIcon(R.drawable.event_black_ic_notification)
+            .setColor(ContextCompat.getColor(context, R.color.primaryColor))
+            .setOngoing(stickyNotification)
+            .setContentTitle("Capturing Events Logs")
         val inboxStyle = NotificationCompat.InboxStyle()
         var count = 0
         textToShow.value?.let {
@@ -63,11 +77,15 @@ class NotificationHelper(var context: Context) {
 
     }
 
-    fun getLaunchIntent(context: Context?): Intent? {
-        return Intent(context, AnalyticsEventsListActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    private fun getLaunchIntent(context: Context?): Intent {
+        return Intent(
+            context,
+            AnalyticsEventsListActivity::class.java
+        ).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     }
 
     fun dismiss() {
-        notificationManager.cancel(11798)
+        if (this::notificationManager.isInitialized)
+            notificationManager.cancel(11798)
     }
 }

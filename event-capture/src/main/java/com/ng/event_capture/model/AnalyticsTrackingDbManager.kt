@@ -1,17 +1,15 @@
 package com.ng.event_capture.model
 
 import android.content.Context
-import android.content.Intent
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import com.ng.event_capture.data.AnalyticsEventDao
 import com.ng.event_capture.data.AnalyticsEventDatabase
 import com.ng.event_capture.repository.AnalyticsEventsRepository
-import com.ng.event_capture.ui.AnalyticsEventsListActivity
 import java.util.*
-import kotlin.collections.ArrayList
 
-class AnalyticsTrackingDbManager(val context: Context) {
+
+internal class AnalyticsTrackingDbManager(val context: Context) {
 
     var analyticsDb: AnalyticsEventDatabase
     var repository: AnalyticsEventsRepository
@@ -21,12 +19,7 @@ class AnalyticsTrackingDbManager(val context: Context) {
     var eventPropertiesList: MutableLiveData<HashMap<String, String>> = MutableLiveData()
     var eventName: MutableLiveData<String> = MutableLiveData()
 
-    companion object {
-        var instance: AnalyticsTrackingDbManager? = null
-    }
-
     init {
-        AnalyticsEventDatabase
         analyticsDb = Room.databaseBuilder(
                 context,
                 AnalyticsEventDatabase::class.java,
@@ -35,7 +28,6 @@ class AnalyticsTrackingDbManager(val context: Context) {
                 .fallbackToDestructiveMigration().allowMainThreadQueries().build()
         repository = AnalyticsEventsRepository(analyticsDb.daoAccess())
         repository.deleteAllData()
-        instance = this
         mNotificationHelper = NotificationHelper(context)
         showNotification(false)
     }
@@ -53,16 +45,14 @@ class AnalyticsTrackingDbManager(val context: Context) {
         eventPropertiesList.value = repository.getEventPropertiesJSON(id)
     }
 
-    fun getLaunchIntent(context: Context?): Intent? {
-        return Intent(context, AnalyticsEventsListActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    }
-
     fun searchEvents(s: String, list: MutableLiveData<List<AnalyticsEventDao>>) {
         val itemList = ArrayList<AnalyticsEventDao>()
         list.value?.let {
             if (it.isNotEmpty()) {
                 for (item in it) {
-                    if (item.eventName.toLowerCase(Locale.ROOT).startsWith(s.toLowerCase(Locale.ROOT))) {
+                    if (item.eventName.lowercase(Locale.ROOT)
+                            .startsWith(s.lowercase(Locale.ROOT))
+                    ) {
                         itemList.add(item)
                     }
                 }
@@ -83,7 +73,7 @@ class AnalyticsTrackingDbManager(val context: Context) {
 
     fun getEventPropertiesAsText(eventName: String, eventProperties: HashMap<String, String>?): String {
         val eventProperty: Map<String, String> = LinkedHashMap(eventProperties)
-        var eventString: String = ""
+        var eventString = ""
         for (key: String in eventProperty.keys) {
             eventString = eventString + key + "  " + eventProperty[key] + "\n"
         }
@@ -95,6 +85,7 @@ class AnalyticsTrackingDbManager(val context: Context) {
              repository.getAllEventsAsJSON(it)
         }
     }
+
 
     fun showNotification(sticky: Boolean) {
         fetchAllEvents()

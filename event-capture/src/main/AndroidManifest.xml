@@ -1,18 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ng.event_capture">
 
-    <application
-        android:theme="@style/BaseTheme">
+    <application>
+
         <activity
             android:name="com.ng.event_capture.ui.AnalyticsEventsListActivity"
-            android:theme="@style/BaseTheme"></activity>
+            android:theme="@style/Theme.EventCapture.NoActionBar" />
 
         <activity
             android:name="com.ng.event_capture.ui.AnalyticsEventsDetailsActivity"
-            android:theme="@style/BaseTheme">
+            android:theme="@style/Theme.EventCapture.NoActionBar" />
 
-        </activity>
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -23,5 +23,7 @@
                 android:name="com.ng.event_capture.model.AnalyticsEventsInitializer"
                 android:value="androidx.startup" />
         </provider>
+
     </application>
+
 </manifest>

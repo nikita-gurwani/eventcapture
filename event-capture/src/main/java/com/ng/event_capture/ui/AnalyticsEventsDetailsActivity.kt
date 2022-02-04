@@ -4,16 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ng.event_capture.R
+import com.ng.event_capture.application.EventCaptureApp
+import com.ng.event_capture.databinding.ActivityAnalyicsEventDetailsBinding
 import com.ng.event_capture.model.AnalyticsTrackingDbManager
 import com.ng.event_capture.ui.adapter.AllEventsDetailsAdapter
-import kotlinx.android.synthetic.main.activity_analyics_event_details.*
 
 
-class AnalyticsEventsDetailsActivity : BaseAnalyticsActivity() {
+internal class AnalyticsEventsDetailsActivity : BaseAnalyticsActivity() {
+
+    private lateinit var binding: ActivityAnalyicsEventDetailsBinding
 
     private lateinit var dbManager: AnalyticsTrackingDbManager
     private lateinit var allEventsDetailsAdapter: AllEventsDetailsAdapter
@@ -26,13 +28,12 @@ class AnalyticsEventsDetailsActivity : BaseAnalyticsActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_analyics_event_details)
+        binding = ActivityAnalyicsEventDetailsBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
         handleIntentArgs()
-        AnalyticsTrackingDbManager.instance?.let {
-            dbManager = it
-            handleEventId()
-
-        }
+        dbManager = EventCaptureApp.instance.dbManager
+        handleEventId()
     }
 
     private fun handleEventId() {
@@ -46,12 +47,15 @@ class AnalyticsEventsDetailsActivity : BaseAnalyticsActivity() {
     }
 
     private fun handleShareButton() {
-        shareAll.setOnClickListener {
+        binding.shareAll.setOnClickListener {
             dbManager.eventPropertiesList.value.let {
                 val intent = Intent(Intent.ACTION_SEND)
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, dbManager.getEventPropertiesAsText(eventName, it));
-                startActivity(intent);
+                intent.type = "text/plain"
+                intent.putExtra(
+                    Intent.EXTRA_TEXT,
+                    dbManager.getEventPropertiesAsText(eventName, it)
+                )
+                startActivity(intent)
             }
         }
     }
@@ -69,12 +73,13 @@ class AnalyticsEventsDetailsActivity : BaseAnalyticsActivity() {
     }
 
     private fun setupRecyclerView() {
-        dbManager.eventPropertiesList.observe(this, Observer {
-            eventDetailsList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        dbManager.eventPropertiesList.observe(this) {
+            binding.eventDetailsList.layoutManager =
+                LinearLayoutManager(this, RecyclerView.VERTICAL, false)
             allEventsDetailsAdapter = AllEventsDetailsAdapter(this, it)
-            eventDetailsList.adapter = allEventsDetailsAdapter
+            binding.eventDetailsList.adapter = allEventsDetailsAdapter
             allEventsDetailsAdapter.notifyDataSetChanged()
-        })
+        }
 
     }
 

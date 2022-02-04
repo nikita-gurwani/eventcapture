@@ -3,4 +3,6 @@
     <string name="action_bar_txt">Events Capture List</string>
     <string name="action_bar_detail_txt">Analytics Events Name Details</string>
     <string name="heading">LIST OF EVENTS</string>
+    <string name="search_events">Search Events</string>
+    <string name="delete_all">Delete all</string>
 </resources>

@@ -3,38 +3,39 @@ package com.ng.event_capture.ui
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ng.event_capture.R
+import com.ng.event_capture.application.EventCaptureApp
 import com.ng.event_capture.data.AnalyticsEventDao
+import com.ng.event_capture.databinding.ActivityAnalyicsEventBinding
 import com.ng.event_capture.model.AnalyticsTrackingDbManager
 import com.ng.event_capture.ui.adapter.AllEventsAdapter
-import kotlinx.android.synthetic.main.activity_analyics_event.*
-import kotlinx.android.synthetic.main.activity_analyics_event_details.*
-import kotlinx.android.synthetic.main.search_layout.*
 
-class AnalyticsEventsListActivity : AppCompatActivity() {
+internal class AnalyticsEventsListActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityAnalyicsEventBinding
 
     private lateinit var dbManager: AnalyticsTrackingDbManager
     private lateinit var allEventsAdapter: AllEventsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_analyics_event)
+        binding = ActivityAnalyicsEventBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
         setUpViews()
-        AnalyticsTrackingDbManager.instance?.let {
-            dbManager = it
-        }
+        dbManager = EventCaptureApp.instance.dbManager
         dbManager.fetchAllEvents()
-        dbManager.allEventsList.observe(this, Observer {
+        dbManager.allEventsList.observe(this) {
             setupRecyclerView(it)
-        })
+        }
         handleSearchView()
         handleShareButton()
     }
@@ -47,9 +48,9 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView(fetchAllEvents: List<AnalyticsEventDao>) {
-        eventList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.eventList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         allEventsAdapter = AllEventsAdapter(this, dbManager.sort(fetchAllEvents))
-        eventList.adapter = allEventsAdapter
+        binding.eventList.adapter = allEventsAdapter
         allEventsAdapter.notifyDataSetChanged()
         addItemClickListener()
     }
@@ -68,33 +69,35 @@ class AnalyticsEventsListActivity : AppCompatActivity() {
     }
 
     private fun handleSearchView() {
-        dbManager.filteredList.observe(this, Observer {
+        dbManager.filteredList.observe(this) {
             setupRecyclerView(it)
-        })
+        }
 
-        searchText.addTextChangedListener(object : TextWatcher {
+        binding.searchLayout.searchText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                Handler().postDelayed({
+                Handler(Looper.getMainLooper()).postDelayed({
                     dbManager.searchEvents(s.toString(), dbManager.allEventsList)
                 }, 500)
             }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) =
+                Unit
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
         })
 
-        deleteAll.setOnClickListener {
+        binding.deleteAll.setOnClickListener {
             dbManager.deleteAllEvents()
         }
     }
 
     private fun handleShareButton() {
-        shareJsonAll.setOnClickListener {
+        binding.shareJsonAll.setOnClickListener {
             dbManager.eventPropertiesList.value.let {
                 val intent = Intent(Intent.ACTION_SEND)
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, dbManager.getAllEventPropertiesAsText());
-                startActivity(intent);
+                intent.type = "text/plain"
+                intent.putExtra(Intent.EXTRA_TEXT, dbManager.getAllEventPropertiesAsText())
+                startActivity(intent)
             }
 
         }

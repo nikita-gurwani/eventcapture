@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">sample</string>
+    <string name="send_event_one">Send Event One</string>
+    <string name="send_event_two">Send Event Two</string>
+    <string name="send_event_three">Send Event Three</string>
+    <string name="start_activity">Start Activity</string>
 </resources>

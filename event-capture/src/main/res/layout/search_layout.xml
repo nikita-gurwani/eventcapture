@@ -12,30 +12,32 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:background="@null"
+        android:contentDescription="@null"
         android:paddingStart="16dp"
         android:paddingTop="16dp"
         android:paddingEnd="16dp"
         android:paddingBottom="12dp"
-        android:src="@drawable/event_debug_ic_search"/>
+        android:src="@drawable/event_debug_ic_search" />
 
     <EditText
         android:id="@+id/searchText"
         style="@style/AndroidBodyBodyDefault"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/searchIcon"
         android:background="@color/backgroundSearch"
+        android:hint="@string/search_events"
         android:ellipsize="end"
-        android:layout_toRightOf="@+id/searchIcon"
-        android:hint="Search Events"
+        android:importantForAutofill="no"
         android:imeActionLabel="Search"
         android:imeOptions="actionSearch"
         android:inputType="text"
+        android:paddingStart="2dp"
         android:paddingTop="16dp"
         android:paddingEnd="16dp"
         android:paddingBottom="12dp"
         android:singleLine="true"
         android:textColorHint="@color/searchHint" />
-
 
 
 </RelativeLayout>

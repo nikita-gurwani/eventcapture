@@ -1,39 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AnayticsEventsTracker">
+    tools:context=".MainActivity">
 
-    <Button
-        android:layout_margin="16dp"
-        android:id="@+id/sendEvent1"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send Event One" />
+        android:theme="@style/Theme.EventCapture.AppBarOverlay">
 
-    <Button
-        android:id="@+id/sendEvent2"
-        android:layout_margin="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sendEvent1"
-        android:text="Send Event Two" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.EventCapture.PopupOverlay" />
 
-    <Button
-        android:id="@+id/sendEvent3"
-        android:layout_margin="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sendEvent2"
-        android:text="Send Event Three" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <Button
-        android:id="@+id/startActivityBtn"
-        android:layout_margin="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sendEvent3"
-        android:text="Send Event Three" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/sendEvent1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/send_event_one"
+            app:layout_constraintBottom_toTopOf="@+id/sendEvent2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/verifyEvent1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@null"
+            android:src="@android:drawable/ic_menu_send"
+            app:layout_constraintBottom_toBottomOf="@+id/sendEvent1"
+            app:layout_constraintStart_toEndOf="@+id/sendEvent1"
+            app:layout_constraintTop_toTopOf="@+id/sendEvent1"
+            app:tint="@color/purple_200" />
+
+        <Button
+            android:id="@+id/sendEvent2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="83dp"
+            android:text="@string/send_event_two"
+            app:layout_constraintBottom_toTopOf="@+id/sendEvent3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sendEvent1" />
+
+        <ImageButton
+            android:id="@+id/verifyEvent2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@null"
+            android:src="@android:drawable/ic_menu_send"
+            app:layout_constraintBottom_toBottomOf="@+id/sendEvent2"
+            app:layout_constraintStart_toEndOf="@+id/sendEvent2"
+            app:layout_constraintTop_toTopOf="@+id/sendEvent2"
+            app:tint="@color/purple_200" />
+
+        <Button
+            android:id="@+id/sendEvent3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="83dp"
+            android:text="@string/send_event_three"
+            app:layout_constraintBottom_toTopOf="@+id/startActivityBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sendEvent2" />
+
+        <ImageButton
+            android:id="@+id/verifyEvent3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@null"
+            android:src="@android:drawable/ic_menu_send"
+            app:layout_constraintBottom_toBottomOf="@+id/sendEvent3"
+            app:layout_constraintStart_toEndOf="@+id/sendEvent3"
+            app:layout_constraintTop_toTopOf="@+id/sendEvent3"
+            app:tint="@color/purple_200" />
+
+        <Button
+            android:id="@+id/startActivityBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="84dp"
+            android:text="@string/start_activity"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sendEvent3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

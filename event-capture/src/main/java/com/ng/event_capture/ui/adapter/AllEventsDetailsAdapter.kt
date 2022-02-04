@@ -8,11 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ng.event_capture.R
 import kotlinx.android.synthetic.main.details_item_analyics_event.view.*
 
-class AllEventsDetailsAdapter(private val context: Context, private var eventProperties: HashMap<String, String>) :
-        RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+internal class AllEventsDetailsAdapter(
+    private val context: Context,
+    private var eventProperties: HashMap<String, String>
+) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.details_item_analyics_event, parent, false)
+        val view = LayoutInflater.from(context)
+            .inflate(R.layout.details_item_analyics_event, parent, false)
         return AllEventsNameAdapterViewHolder(view)
     }
 
