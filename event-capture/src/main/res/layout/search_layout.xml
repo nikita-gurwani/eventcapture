@@ -21,7 +21,7 @@
 
     <EditText
         android:id="@+id/searchText"
-        style="@style/AndroidBodyBodyDefault"
+        style="@style/BodyBodyDefault"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/searchIcon"
