@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AndroidHeading">
+    <style name="Heading">
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textStyle">normal</item>
@@ -8,7 +8,7 @@
         <item name="android:textColor">@color/headingTextColor</item>
     </style>
 
-    <style name="AndroidTextDefault">
+    <style name="TextDefault">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textStyle">normal</item>
@@ -16,7 +16,7 @@
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
-    <style name="AndroidTextMedium">
+    <style name="TextMedium">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textStyle">normal</item>
@@ -24,7 +24,7 @@
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
-    <style name="AndroidBodyBodyDefault">
+    <style name="BodyBodyDefault">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textStyle">normal</item>

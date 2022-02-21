@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/eventKey"
-            style="@style/AndroidTextMedium"
+            style="@style/TextMedium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -23,7 +23,7 @@
 
         <TextView
             android:id="@+id/eventValue"
-            style="@style/AndroidTextDefault"
+            style="@style/TextDefault"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
